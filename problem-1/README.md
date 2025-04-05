@@ -77,3 +77,117 @@ Timestamp,Price,Change,Significant
 ```bash 
     pip install -R Requirements.txt
 
+
+
+# 🕵️ Level 3: CAPTCHA Bypass & Dynamic Price Tracker
+
+## 🚨 Problem Statement
+You are a **data hunter** chasing real-time price fluctuations across major e-commerce platforms like **Walmart** and **Best Buy**. However, automated scraping is guarded by CAPTCHAs, anti-bot protection, and dynamic pages.
+
+Your task is to build a **stealthy scraper** using `Selenium` and `undetected-chromedriver` that can:
+- Bypass CAPTCHA challenges
+- Rotate User Agents
+- Mimic human behavior with dynamic delays
+- Auto-retry on CAPTCHA or system failure
+- Extract product prices reliably
+
+---
+
+## 🔧 Tech Stack
+- Python 3.10+
+- selenium
+- undetected-chromedriver
+- re (for regex based price extraction)
+
+---
+
+## 📦 Setup Instructions
+
+### 1. Clone the Repository
+```bash
+git clone <repo-url>
+cd modulusn/problem-1
+```
+
+### 2. Setup Virtual Environment
+```bash
+python3.10 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 3. Install ChromeDriver v134
+Make sure your local Chrome is version 134. Download the matching ChromeDriver:
+```bash
+wget https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.117/linux64/chromedriver-linux64.zip
+unzip chromedriver-linux64.zip
+mv chromedriver-linux64/chromedriver /usr/local/bin/
+chmod +x /usr/local/bin/chromedriver
+```
+
+> If needed, you can update the script to use a custom path like:
+```python
+driver_executable_path="/absolute/path/to/chromedriver"
+```
+
+### 4. Fix Python Build Errors (if using Python 3.12+)
+```bash
+sudo apt install python3-distutils
+pip install setuptools
+```
+
+---
+
+## ▶️ Run the Script
+```bash
+python level-3.py
+```
+
+---
+
+## 🔍 Features
+
+- ✅ **Undetected Chrome Driver**: Avoids detection from anti-bot mechanisms.
+- 🔁 **Auto Retry on CAPTCHA**: Detects and retries if CAPTCHA appears.
+- 👤 **Rotating User Agents**: Simulates different browsers.
+- ⏱️ **Human-like delays**: Adds randomized sleep between actions.
+- 💸 **Regex-based Price Extraction**: Captures dollar-formatted prices.
+
+---
+
+## 📎 Target Links
+- [Walmart Product Page](https://www.walmart.com/ip/Apple-AirPods-Pro-2nd-Generation/1045954546)
+- [Best Buy Product Page](https://www.bestbuy.com/site/apple-airpods-pro-2nd-generation-with-usb-c-white/6507681.p)
+
+---
+
+## 🛠 Troubleshooting
+
+### ❌ `WebDriver failed: session not created`
+- Make sure your local Chrome matches the version of ChromeDriver (134).
+- Use the `version_main=134` flag in the driver if needed.
+
+### ❌ `ModuleNotFoundError: No module named 'distutils'`
+- Install it via `sudo apt install python3-distutils`
+
+### ❌ CAPTCHA Loop
+- Try increasing the random sleep duration.
+- Improve user-agent randomness.
+- Optionally add proxy rotation.
+
+---
+
+## 📈 Example Output
+```
+🌐 Visiting: https://www.walmart.com/ip/Apple-AirPods-Pro-2nd-Generation/1045954546
+✅ Apple AirPods Pro (2nd Generation) — $199.99
+--------------------------------------------------
+🌐 Visiting: https://www.bestbuy.com/site/apple-airpods-pro-2nd-generation-with-usb-c-white/6507681.p
+✅ Best Buy — $189.00
+--------------------------------------------------
+```
+
+---
+
+Happy Scraping! 🕸️
+
